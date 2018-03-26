@@ -1,37 +1,105 @@
-## Welcome to GitHub Pages
+<html>
+<head>
+<title>Chama no WhatsApp</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-You can use the [editor on GitHub](https://github.com/muralhaa/unigranet/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+<style>
+.well {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #ecf0f1;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+}
+.btn {
+    border-width: 2px;
+}
+.btn-default {
+    color: #ffffff;
+    background-color: #95a5a6;
+    border-color: #95a5a6;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</style>
+</head>
+<body>
+<div class="container"> 
+<div class="row">
+         <div class="col-md-6 col-md-offset-3">
+            <div class="well text-center">
+               <p><small>Os campos marcados com um asterisco (*) são obrigatórios</small></p>
+               <form action="" method="post" id="whats">
+                  <div class="form-group">
+                     <input class="form-control" id="telefone" maxlength="100" name="telefone" placeholder="Telefone do Contato *" type="text" />
+                  </div>                                   
+                  <div class="form-group">
+                     <textarea class="form-control" cols="40" id="mensagem" name="mensagem" placeholder="Mensagem *" rows="10">
+</textarea>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-default">Enviar Mensagem</button>
+               </form>
+            
+            </div>
+         </div>         
+      </div>
+</div>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-### Markdown
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+<script>
 
-# Header 1
-## Header 2
-### Header 3
+var form = document.getElementById('whats');
+var url = "https://api.whatsapp.com/send?"
 
-- Bulleted
-- List
+form.addEventListener('submit', function(e) {
+		
+    var numero = $("#telefone").val();
+    var mensagem = $("#mensagem").val();
+    var str = mensagem.replace(/( )+/g, '%20');
+    
+    var url = `https://api.whatsapp.com/send?phone=55${numero}&text=${str}`;
 
-1. Numbered
-2. List
+		window.open(url,"_blank")
+    // alerta o valor do campo
+    //alert(url);
+    // impede o envio do form
+    e.preventDefault();
+});
+</script>
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/muralhaa/unigranet/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+</body>
+</html>
