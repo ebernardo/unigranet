@@ -81,18 +81,12 @@
 
 
 <script>
-
 var form = document.getElementById('whats');
-var url = "https://api.whatsapp.com/send?"
-
 form.addEventListener('submit', function(e) {
-		
     var numero = $("#telefone").val();
     var mensagem = $("#mensagem").val();
     var str = mensagem.replace(/( )+/g, '%20');
-    
-    var url = `https://api.whatsapp.com/send?phone=55${numero}&text=${str}`;
-
+    var url = `https://web.whatsapp.com/send?phone=55${numero}&text=${str}`;
 		window.open(url,"_blank")
     // alerta o valor do campo
     //alert(url);
@@ -100,6 +94,5 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
 });
 </script>
-
 </body>
 </html>
